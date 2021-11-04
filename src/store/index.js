@@ -3,28 +3,30 @@ import axios from 'axios'
 
 const store = createStore({
     state: {
-        characters: []
+        characters: null
     },
     mutations: {
         setCharacters ( state, payload ) {
-            state.characters = payload
+            setTimeout(() => {
+                state.characters = payload
+            }, 3000)
         },
-        setCharactersFilter ( state, payload ) {
+        resetCharacters ( state, payload ) {
             state.characters = payload
         }
     },
     actions: {
-        getCharacters ({ commit }) {
-            const url = 'https://rickandmortyapi.com/api/character/[1,2,3,4,5,6]'
+        getCharacters ({ commit }, query='rick') {
+            const url = `https://rickandmortyapi.com/api/character/?name=${ query }`
             axios.get( url )
-                .then( ({ data }) => commit( 'setCharacters', data ) )
+                .then( ({ data }) => {
+                    const { results } = data
+                    commit( 'setCharacters', results )
+                })
                 .catch( console.log )
         },
-        getCharactersFilter ({ commit }, query ) {
-            const url = `https://rickandmortyapi.com/api/character/?name=${ encodeURI(query) }`
-            axios.get( url )
-                .then( ({ results }) => commit( 'setCharactersFilter', results ) )
-                .catch( console.log )
+        resetCharacters({commit}) {
+            commit('resetCharacters', null)
         }
     }
 })

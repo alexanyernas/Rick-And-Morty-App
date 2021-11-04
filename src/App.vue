@@ -17,7 +17,7 @@ export default {
   methods: {
     ...mapActions(['getCharacters'])
   },
-  beforeMount () {
+  created () {
     this.getCharacters()
   }
 }

@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-3">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark p-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="../assets/favicon.png" alt="" width="30" height="30" class="d-inline-block align-text-top">

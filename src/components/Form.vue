@@ -1,6 +1,9 @@
 <template>
     <div class="d-flex justify-content-center">
-        <form @submit.prevent="handleSubmit" class="row align-self-center">
+        <form 
+            @submit.prevent="handleSubmit" 
+            class="row align-self-center"
+        >
             <div>
                 <input 
                     type="text" 
@@ -33,9 +36,10 @@ export default {
         }
     },
     methods: {
-        ...mapActions(['getCharactersFilter']),
+        ...mapActions( ['getCharacters', 'resetCharacters'] ),
         handleSubmit () {
-            this.getCharactersFilter( this.query )
+            this.resetCharacters()
+            this.getCharacters( this.query )
             this.query = ''
         }
     }
