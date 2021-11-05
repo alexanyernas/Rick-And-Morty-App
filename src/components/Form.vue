@@ -9,7 +9,7 @@
                     type="text" 
                     v-model.trim="query"
                     class="form-control" 
-                    placeholder="Name a character..."
+                    placeholder="Type a name..."
                     required 
                 />
             </div>
